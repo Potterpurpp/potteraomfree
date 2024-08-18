@@ -1,15 +1,37 @@
-import React from "react";
-
-const Home: React.FC = () => {
+const HomePage = () => {
   return (
     <div>
-      <h1>Welcome to Our Social Enterprise</h1>
-      <p>
-        Our mission is to solve social issues like education, health,
-        environment, and poverty.
-      </p>
+      <header>
+        <h1>AgriTech Solutions</h1>
+        <p>สร้างสรรค์เทคโนโลยีเพื่อเกษตรกรยุคใหม่</p>
+      </header>
+      <section>
+        <h2>เกี่ยวกับเรา</h2>
+        <p>
+          เราพัฒนาแอปพลิเคชันที่ช่วยเกษตรกรในการจัดการทรัพยากร
+          การวางแผนการเพาะปลูก และการคาดการณ์สภาพอากาศ
+          เพื่อป้องกันความเสียหายจากสภาพภูมิอากาศที่ไม่แน่นอน
+        </p>
+      </section>
+      <section>
+        <h2>ผลงานของเรา</h2>
+        <ul>
+          <li>
+            โครงการเพาะปลูกอัจฉริยะ -
+            ช่วยเกษตรกรวางแผนการเพาะปลูกด้วยข้อมูลสภาพอากาศและดิน
+          </li>
+          <li>
+            แอปพลิเคชันวิเคราะห์โรคพืช -
+            ช่วยเกษตรกรตรวจสอบและรักษาพืชผลจากโรคภัย
+          </li>
+          <li>
+            แพลตฟอร์มเชื่อมโยงตลาดออนไลน์สำหรับเกษตรกร -
+            ช่วยให้เกษตรกรสามารถขายผลิตผลโดยตรงสู่ผู้บริโภค
+          </li>
+        </ul>
+      </section>
     </div>
   );
 };
 
-export default Home;
+export default HomePage;
