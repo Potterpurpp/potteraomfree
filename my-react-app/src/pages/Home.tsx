@@ -1,6 +1,8 @@
+import styled from "styled-components";
+
 const HomePage = () => {
   return (
-    <div>
+    <>
       <header>
         <h1>AgriTech Solutions</h1>
         <p>สร้างสรรค์เทคโนโลยีเพื่อเกษตรกรยุคใหม่</p>
@@ -30,7 +32,7 @@ const HomePage = () => {
           </li>
         </ul>
       </section>
-    </div>
+    </>
   );
 };
 

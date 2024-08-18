@@ -18,11 +18,11 @@ export default tseslint.config({
   languageOptions: {
     // other options...
     parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
+      project: ["./tsconfig.node.json", "./tsconfig.app.json"],
       tsconfigRootDir: import.meta.dirname,
     },
   },
-})
+});
 ```
 
 - Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
@@ -31,11 +31,11 @@ export default tseslint.config({
 
 ```js
 // eslint.config.js
-import react from 'eslint-plugin-react'
+import react from "eslint-plugin-react";
 
 export default tseslint.config({
   // Set the react version
-  settings: { react: { version: '18.3' } },
+  settings: { react: { version: "18.3" } },
   plugins: {
     // Add the react plugin
     react,
@@ -44,7 +44,53 @@ export default tseslint.config({
     // other rules...
     // Enable its recommended rules
     ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
+    ...react.configs["jsx-runtime"].rules,
   },
-})
+});
+```
+
+เข้า branch main
+
+```
+git pull
+```
+
+สลับมา branch ตัวเอง
+
+```
+git merge main
+```
+
+เอาของเข้า branch ตัวเอง
+
+```
+git fetch
+git pull
+git push
+```
+
+ถ้าจะเอาของไปรวมใน main
+
+```
+git add .
+```
+
+```
+git commit -m "Commit: message"
+```
+
+```
+git push
+```
+
+จากนั้นสลับมา branch main
+
+```
+git merge <ใส่ชื่อ branch ตัวในนี้ลบเครื่องหมายมากกว่าน้อยกว่าออกด้วย>
+```
+
+จากนั้น
+
+```
+git push
 ```
