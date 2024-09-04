@@ -1,78 +1,59 @@
-import React from "react";
+import { FC, useState } from "react";
+import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
-import logo from "../assets/agri.png";
 
-// const NavbarContainer = styled.nav`
-//   background-color: #333;
-//   padding: 1rem;
-//   position: fixed;
-//   z-index: 100; /* Ensure the navbar stays visible on top of other elements */
-//   width: 100%;
-//   top: 0;
-//   left: 0;
-// `;
+const Navbar: FC = () => {
+  const [nav, setNav] = useState(false);
+  const handleNav = () => {
+    setNav(!nav);
+  };
 
-// const NavList = styled.ul`
-//   list-style: none;
-//   display: flex;
-//   justify-content: space-around;
-//   margin: 0;
-//   padding-left: 50rem;
-//   align-items: center; /* Align items vertically in the center */
-// `;
+  const navItems = [
+    { id: 1, text: "Home", path: "/" },
+    { id: 2, text: "Project", path: "/projects" },
+    { id: 3, text: "Fundraising", path: "/fundraising" },
+    { id: 4, text: "Contact", path: "/contact" },
+  ];
 
-// const NavItem = styled.li`
-//   margin: 0 1rem;
-//   display: flex;
-//   align-items: center; /* Center content vertically */
-// `;
-
-// const NavLink = styled(Link)`
-//   color: white;
-//   text-decoration: none;
-//   font-weight: bold;
-//   font-size: 1rem; /* Adjust this size to match your desired text size */
-
-//   &:hover {
-//     color: #ddd;
-//   }
-// `;
-
-const StyledNavbar: React.FC = () => {
   return (
-    <>
-      <div>
-        <img className="Logo" src={logo} alt="Logo" />
-        {/* <NavList>
-          <NavItem>
-            <NavLink to="/">Home</NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink to="/projects">Projects</NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink to="/fundraising">Fundraising</NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink to="/profile">Contract</NavLink>
-          </NavItem>
-        </NavList> */}
+    <div className="bg-black flex justify-between items-center h-24 mx-auto px-4 text-white">
+      <h1 className="w-full text-3xl font-bold text-[#00df9a] px-8">
+        AgriTech
+      </h1>
+      <ul className="hidden md:flex">
+        {navItems.map((item) => (
+          <li
+            key={item.id}
+            className="p-4 hover:bg-[#00df9a] rounded-xl m-2 cursor-pointer duration-300 hover:text-black"
+          >
+            <Link to={item.path}>{item.text}</Link>
+          </li>
+        ))}
+      </ul>
+      <div onClick={handleNav} className="block md:hidden">
+        {nav ? <AiOutlineClose size={20} /> : <AiOutlineMenu size={20} />}
       </div>
-    </>
+      <ul
+        className={
+          nav
+            ? "fixed md:hidden left-0 top-0 w-full h-full border-r border-r-gray-900 bg-[#000300] ease-in-out duration-500"
+            : "fixed top-0 bottom-0 left-[-100%] w-full ease-in-out duration-500"
+        }
+      >
+        <h1 className="w-full text-3xl font-bold text-[#00df9a] m-4 mt-8">
+          AgriTech
+        </h1>
+        {navItems.map((item) => (
+          <li
+            key={item.id}
+            className="p-4 border-b rounded-xl hover:bg-[#00df9a] duration-300 hover:text-black cursor-pointer border-gray-600 text-center"
+          >
+            <Link to={item.path}>{item.text}</Link>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };
 
-export default styled(StyledNavbar)`
-  .Logo {
-    width: 150px;
-    cursor: pointer;
-    transition: color 0.3s ease-in-out;
-    height: 150px;
-    top: -50px;
-    &:hover {
-      color: #ddd;
-    }
-    position: absolute;
-  }
-`;
+export default Navbar;

@@ -1,75 +1,57 @@
-import React, { useState } from 'react';
-
-interface ContactFormData {
-  name: string;
-  email: string;
-  message: string;
-}
+import React from "react";
+import Potter from "../assets/Potter1.jpeg";
+import Aom from "../assets/Aom.jpg";
 
 const ContactPage: React.FC = () => {
-  const [formData, setFormData] = useState<ContactFormData>({
-    name: '',
-    email: '',
-    message: '',
-  });
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log('Form Data Submitted:', formData);
-    // Here, you would typically send the form data to the server
-  };
-
+  const contactUs = [
+    {
+      id: 1,
+      name: "NUDDANAI KLAIKLIN",
+      email: "nuddanai_klaiklin@cmu.ac.th",
+      phone: "0991364527",
+      img: Potter,
+      jobTitle: "Student",
+      Faculty: "College of Arts, Media and Technology",
+    },
+    {
+      id: 2,
+      name: "NATCHAYAPHORN JANTHIMA",
+      email: "natchayaphorn_janthima@cmu.ac.th",
+      phone: "0991364527",
+      img: Aom,
+      jobTitle: "Student",
+      Faculty: "College of Arts, Media and Technology",
+    },
+  ];
   return (
-    <div>
-      <header>
-        <h1>ติดต่อเรา</h1>
+    <>
+      <header className="mb-1">
+        <h1 className="text-4xl font-bold text-center text-[#00df9a]">
+          ติดต่อเรา
+        </h1>
       </header>
-      <section>
-        <p>
-          หากคุณมีข้อสงสัยหรือข้อเสนอแนะเกี่ยวกับการพัฒนาเกษตรกรรม โปรดติดต่อเราได้ทางแบบฟอร์มด้านล่าง
-        </p>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor="name">ชื่อ:</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="email">อีเมล:</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="message">ข้อความ:</label>
-            <textarea
-              id="message"
-              name="message"
-              value={formData.message}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <button type="submit">ส่งข้อความ</button>
-        </form>
-      </section>
-    </div>
+
+      <div className="max-w-7xl mx-auto p-6 bg-gray-100 rounded-lg shadow-lg">
+        <div className="grid grid-cols-2 gap-2 place-content-evenly">
+          {contactUs.map((contact) => (
+            <div className="flex items-center flex-col">
+              <h1 className="font-normal text-2xl">คุณ {contact.name}</h1>
+              <br />
+              <img
+                src={contact.img}
+                alt="Potter"
+                className="h-3/5 w-5/6 object-cover"
+              ></img>
+              <br />
+              <h2>Email: {contact.email}</h2>
+              <h2>Phone: {contact.phone}</h2>
+              <h2>JobTitle: {contact.jobTitle}</h2>
+              <h2>Faculty: {contact.Faculty}</h2>
+            </div>
+          ))}
+        </div>
+      </div>
+    </>
   );
 };
 
