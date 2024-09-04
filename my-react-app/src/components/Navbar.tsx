@@ -22,11 +22,13 @@ const Navbar: FC = () => {
       </h1>
       <ul className="hidden md:flex">
         {navItems.map((item) => (
-          <li
-            key={item.id}
-            className="p-4 hover:bg-[#00df9a] rounded-xl m-2 cursor-pointer duration-300 hover:text-black"
-          >
-            <Link to={item.path}>{item.text}</Link>
+          <li key={item.id}>
+            <Link
+              to={item.path}
+              className="w-full h-full flex items-center justify-center p-4 hover:bg-[#00df9a] rounded-xl cursor-pointer duration-300 hover:text-black"
+            >
+              {item.text}
+            </Link>
           </li>
         ))}
       </ul>
@@ -44,11 +46,13 @@ const Navbar: FC = () => {
           AgriTech
         </h1>
         {navItems.map((item) => (
-          <li
-            key={item.id}
-            className="p-4 border-b rounded-xl hover:bg-[#00df9a] duration-300 hover:text-black cursor-pointer border-gray-600 text-center"
-          >
-            <Link to={item.path}>{item.text}</Link>
+          <li key={item.id}>
+            <Link
+              to={item.path}
+              className="block p-4 border-b rounded-xl hover:bg-[#00df9a] duration-300 hover:text-black cursor-pointer border-gray-600 text-center"
+            >
+              {item.text}
+            </Link>
           </li>
         ))}
       </ul>
