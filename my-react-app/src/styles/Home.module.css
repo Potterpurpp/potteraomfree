@@ -1,0 +1,45 @@
+/* HomePage.module.css */
+.header {
+  background-color: #4caf50;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.header h1 {
+  margin: 0;
+}
+
+.header p {
+  margin: 5px 0;
+  font-style: italic;
+}
+
+.sample2 {
+  padding: 20px;
+  margin: 10px;
+}
+
+.sample2 h2 {
+  color: #333;
+}
+
+.sample2 ul {
+  list-style-type: square;
+  padding-left: 20px;
+}
+
+.sample2 li {
+  margin-bottom: 10px;
+}
+
+@media (max-width: 600px) {
+  .header,
+  .sample2 {
+    padding: 10px;
+  }
+
+  .sample2 ul {
+    padding-left: 15px;
+  }
+}
