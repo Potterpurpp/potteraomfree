@@ -26,7 +26,7 @@ const ContactPage: React.FC = () => {
   return (
     <>
       <header className="mb-1">
-        <h1 className="text-4xl font-bold text-center text-[#00df9a] mt-8">
+        <h1 className="text-4xl font-bold text-center text-[#00df9a]">
           ติดต่อเรา
         </h1>
       </header>

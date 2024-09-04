@@ -10,12 +10,14 @@ const App: React.FC = () => {
   return (
     <Router>
       <StyledNavbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/projects" element={<ProjectsPage />} />
-        <Route path="/fundraising" element={<FundraisingPage />} />{" "}
-        <Route path="/contact" element={<ContactPage />} />
-      </Routes>
+      <div style={{ marginTop: "4rem" }}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/projects" element={<ProjectsPage />} />
+          <Route path="/fundraising" element={<FundraisingPage />} />{" "}
+          <Route path="/contact" element={<ContactPage />} />
+        </Routes>
+      </div>
     </Router>
   );
 };
