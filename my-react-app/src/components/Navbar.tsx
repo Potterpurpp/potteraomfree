@@ -11,8 +11,9 @@ const Navbar: FC = () => {
   const navItems = [
     { id: 1, text: "Home", path: "/" },
     { id: 2, text: "Project", path: "/projects" },
-    { id: 3, text: "Fundraising", path: "/fundraising" },
-    { id: 4, text: "Contact", path: "/contact" },
+    { id: 3, text: "Knowledge", path: "/knowledge" },
+    { id: 4, text: "Fundraising", path: "/fundraising" },
+    { id: 5, text: "Contact", path: "/contact" },
   ];
 
   return (

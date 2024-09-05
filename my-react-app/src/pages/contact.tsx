@@ -27,7 +27,7 @@ const ContactPage: React.FC = () => {
     <>
       <header className="mb-1">
         <h1 className="text-4xl font-bold text-center text-[#00df9a] mt-8">
-          ติดต่อเรา
+          ติดต่อนักพัฒนา
         </h1>
       </header>
 
@@ -47,6 +47,10 @@ const ContactPage: React.FC = () => {
               <h2>Phone: {contact.phone}</h2>
               <h2>JobTitle: {contact.jobTitle}</h2>
               <h2>Faculty: {contact.Faculty}</h2>
+              <br />
+              <button className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">
+                Explore More
+              </button>
             </div>
           ))}
         </div>

@@ -1,27 +1,15 @@
-import React from 'react';
+import React, { useState } from "react";
+import SearchBar from "../components/SearchBar";
 
 const FundraisingPage: React.FC = () => {
+  const [searchQuery, setSearchQuery] = useState("");
+
   return (
-    <div>
-      <header>
-        <h1>ระดมทุน</h1>
-      </header>
-      <section>
-        <h2>เป้าหมายของการระดมทุน</h2>
-        <p>
-          เงินที่ได้รับจากการระดมทุนจะถูกนำไปใช้ในการพัฒนานวัตกรรมทางการเกษตร เช่น การพัฒนาเซ็นเซอร์ตรวจสอบดิน
-          การสร้างระบบการจัดการน้ำ หรือการฝึกอบรมเกษตรกรในการใช้เทคโนโลยีใหม่ๆ
-        </p>
-      </section>
-      <section>
-        <h2>แนวทางการแก้ไขปัญหา</h2>
-        <ul>
-          <li>การจัดการทรัพยากร</li>
-          <li>การคาดการณ์สภาพอากาศ</li>
-          <li>การเชื่อมโยงเกษตรกรกับตลาด</li>
-          <li>การจัดการความรู้และข้อมูล</li>
-        </ul>
-      </section>
+    <div className="container mx-auto p-6">
+      <h1 className="text-3xl font-bold text-center mb-6">
+        Fundraising Center
+      </h1>
+      <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
     </div>
   );
 };

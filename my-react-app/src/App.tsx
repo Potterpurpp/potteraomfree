@@ -5,6 +5,7 @@ import StyledNavbar from "./components/Navbar";
 import ProjectsPage from "./pages/Project";
 import ContactPage from "./pages/contact";
 import FundraisingPage from "./pages/Fundraising";
+import KnowledgePage from "./pages/KnowlegdePage";
 
 const App: React.FC = () => {
   return (
@@ -15,6 +16,7 @@ const App: React.FC = () => {
         <Route path="/projects" element={<ProjectsPage />} />
         <Route path="/fundraising" element={<FundraisingPage />} />{" "}
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/knowledge" element={<KnowledgePage />} />
       </Routes>
     </Router>
   );
