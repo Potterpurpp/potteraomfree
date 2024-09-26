@@ -6,6 +6,7 @@ import ProjectsPage from "./pages/Project";
 import ContactPage from "./pages/contact";
 import FundraisingPage from "./pages/Fundraising";
 import KnowledgePage from "./pages/KnowlegdePage";
+import PotterPort from "./potter/PotterPort";
 
 const App: React.FC = () => {
   return (
@@ -17,6 +18,7 @@ const App: React.FC = () => {
         <Route path="/fundraising" element={<FundraisingPage />} />{" "}
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/knowledge" element={<KnowledgePage />} />
+        <Route path="/potterport" element={<PotterPort />} />
       </Routes>
     </Router>
   );

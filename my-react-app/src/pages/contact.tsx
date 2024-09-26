@@ -1,6 +1,7 @@
 import React from "react";
 import Potter from "../assets/Potter1.jpeg";
 import Aom from "../assets/Aom.jpg";
+import { Link } from "react-router-dom";
 
 const ContactPage: React.FC = () => {
   const contactUs = [
@@ -48,9 +49,18 @@ const ContactPage: React.FC = () => {
               <h2>JobTitle: {contact.jobTitle}</h2>
               <h2>Faculty: {contact.Faculty}</h2>
               <br />
-              <button className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">
-                Explore More
-              </button>
+              {contact.id == 1 ? (
+                <Link
+                  className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
+                  to={"/potterport"}
+                >
+                  Explore More
+                </Link>
+              ) : (
+                <button className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">
+                  Explore More
+                </button>
+              )}
             </div>
           ))}
         </div>
