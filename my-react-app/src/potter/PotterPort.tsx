@@ -18,8 +18,8 @@ const PotterPort = () => {
               </h1>
               <p className="text-xl text-gray-700">
                 Hi, I'm Potter. I'm a student at Chiang Mai University, majoring
-                in CAMT. I'm passionate about technology and design, always
-                eager to learn and create.
+                in Digital Industry Integration. I'm passionate about technology
+                and design, always eager to learn and create.
               </p>
             </div>
             <div className="h-[400px] md:h-[500px] overflow-hidden rounded-lg shadow-lg">
