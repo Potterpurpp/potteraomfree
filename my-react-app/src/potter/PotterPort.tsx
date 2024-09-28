@@ -10,7 +10,7 @@ const PotterPort = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div className="space-y-10">
-              <p className="text-lg text-gray-600">
+              <p className="text-xl text-green-600">
                 College of Arts, Media and Technology, Chiang Mai University
               </p>
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900">
