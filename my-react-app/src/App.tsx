@@ -7,7 +7,8 @@ import KnowledgePage from "./pages/KnowlegdePage";
 import PotterPort from "./potter/PotterPort";
 import PortAom from "./aom/PortAom";
 import Financial from "./pages/Financial";
-
+import DonationPage from "./pages/DonationPage";
+import Marketplace from "./pages/Marketplace";
 
 
 const App: React.FC = () => {
@@ -21,6 +22,8 @@ const App: React.FC = () => {
         <Route path="/potterport" element={<PotterPort />} />
         <Route path="/portaom" element={<PortAom />} />
         <Route path="/financial" element={<Financial/>} />
+        <Route path="/donationpage" element={<DonationPage/>} />
+        <Route path="/marketplace" element={<Marketplace/>} />
       </Routes>
     </Router>
   );

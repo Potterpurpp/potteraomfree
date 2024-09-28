@@ -13,7 +13,8 @@ const Navbar: FC = () => {
     { id: 2, text: "Marketplace", path: "/marketplace" },
     { id: 3, text: "Knowledge", path: "/knowledge" },
     { id: 4, text: "Financial", path: "/financial" },
-    { id: 5, text: "Contact", path: "/contact" },
+    { id: 5, text: "Donate", path: "/donationpage" },
+    { id: 6, text: "Contact", path: "/contact" },
   ];
 
   return (
