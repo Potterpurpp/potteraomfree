@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import potter from "../assets/Potter1.jpeg";
 import AboutPotter from "./AboutPotter";
+import FooterPotter from "./FooterPotter";
 
 const PotterPort = () => {
   return (
@@ -34,7 +35,9 @@ const PotterPort = () => {
       <section className="bg-gray-50 w-full py-16">
         <AboutPotter />
       </section>
-      <section className="bg-slate-800 w-full h-72"></section>
+      <section className="bg-slate-800 w-full py-16">
+        <FooterPotter />
+      </section>
     </>
   );
 };

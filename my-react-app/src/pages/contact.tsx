@@ -57,9 +57,12 @@ const ContactPage: React.FC = () => {
                   Explore More
                 </Link>
               ) : (
-                <button className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">
+                <Link
+                  className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
+                  to={"/portaom"}
+                >
                   Explore More
-                </button>
+                </Link>
               )}
             </div>
           ))}
