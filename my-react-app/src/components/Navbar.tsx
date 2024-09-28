@@ -11,7 +11,7 @@ const Navbar: FC = () => {
   const navItems = [
     { id: 1, text: "Home", path: "/" },
     { id: 2, text: "Marketplace", path: "/marketplace" },
-    { id: 3, text: "Knowledge", path: "/knowledge" },
+    { id: 7, text: "Forum", path: "/community" },
     { id: 4, text: "Financial", path: "/financial" },
     { id: 5, text: "Donate", path: "/donationpage" },
     { id: 6, text: "Contact", path: "/contact" },

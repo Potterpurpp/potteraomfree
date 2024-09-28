@@ -1,33 +1,36 @@
-import React, { useState } from 'react';
-import { ShoppingCart,Search } from 'lucide-react';
+import React, { useState } from "react";
+import { ShoppingCart, Search } from "lucide-react";
 
 const products = [
   {
     id: 1,
     name: "Organic Tomato Seeds",
-    price: 15,
-    image: "https://via.placeholder.com/150",
+    price: 1,
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSj0xTzz13oqWLvsguwyba7FmBWU9Ow3pVJ5g&s",
     category: "Seeds",
   },
   {
     id: 2,
-    name: "Eco-Friendly Fertilizer",
+    name: "Carrot",
     price: 25,
-    image: "https://via.placeholder.com/150",
+    image: "https://www.hhs1.com/hubfs/carrots%20on%20wood-1.jpg",
     category: "Fertilizers",
   },
   {
     id: 3,
-    name: "Handheld Garden Trowel",
-    price: 10,
-    image: "https://via.placeholder.com/150",
+    name: "Shovel",
+    price: 500,
+    image:
+      "https://plus.unsplash.com/premium_photo-1680658496041-f7575066cec2?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8c2hvdmVsfGVufDB8fDB8fHww",
     category: "Tools",
   },
   {
     id: 4,
     name: "Pesticide Spray Bottle",
-    price: 20,
-    image: "https://via.placeholder.com/150",
+    price: 300,
+    image:
+      "https://www.vitalgardensupply.com/cdn/shop/files/defenderbottlecutout.jpg?v=1684450041",
     category: "Pesticides",
   },
 ];
@@ -35,8 +38,8 @@ const products = [
 const categories = ["All", "Seeds", "Fertilizers", "Tools", "Pesticides"];
 
 const Marketplace = () => {
-  const [selectedCategory, setSelectedCategory] = useState('All');
-  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [searchTerm, setSearchTerm] = useState("");
 
   const filteredProducts = products.filter(
     (product) =>
@@ -48,7 +51,10 @@ const Marketplace = () => {
     <div className="max-w-7xl mx-auto p-6">
       {/* Header */}
       <header className="flex items-center justify-between mb-8">
-        <h1 className="text-4xl font-bold text-gray-900"> AgriTech Marketplace</h1>
+        <h1 className="text-4xl font-bold text-gray-900">
+          {" "}
+          AgriTech Marketplace
+        </h1>
         <div className="flex space-x-4">
           <input
             type="text"
@@ -90,9 +96,11 @@ const Marketplace = () => {
             <img
               src={product.image}
               alt={product.name}
-              className="h-32 w-full object-cover mb-4 rounded-lg"
+              className="h-32 w-full object-fill mb-4 rounded-lg"
             />
-            <h2 className="text-lg font-semibold text-gray-900">{product.name}</h2>
+            <h2 className="text-lg font-semibold text-gray-900">
+              {product.name}
+            </h2>
             <p className="text-gray-700">Price: ${product.price}</p>
             <button className="mt-4 w-full bg-green-600 text-white p-2 rounded-lg">
               Add to Cart
