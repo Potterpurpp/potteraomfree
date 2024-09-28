@@ -27,8 +27,8 @@ const ContactPage: React.FC = () => {
   return (
     <>
       <header className="mb-1">
-        <h1 className="text-4xl font-bold text-center text-[#00df9a] mt-8">
-          ติดต่อนักพัฒนา
+        <h1 className="text-4xl font-bold text-center text-green-600 mt-8">
+          Contact Developer
         </h1>
       </header>
 
@@ -36,7 +36,9 @@ const ContactPage: React.FC = () => {
         <div className="grid grid-cols-2 gap-2 place-content-evenly">
           {contactUs.map((contact) => (
             <div className="flex items-center flex-col">
-              <h1 className="font-normal text-2xl">คุณ {contact.name}</h1>
+              <h1 className="font-normal text-2xl">
+                {contact.id == 1 ? "Mr." : "Mrs."} {contact.name}
+              </h1>
               <br />
               <img
                 src={contact.img}
