@@ -3,44 +3,44 @@ import { PieChart, Pie, Cell, Tooltip, Legend } from "recharts";
 
 const data = [
   {
-    name: "Budgeting Basics",
+    name: "Smart Irrigation Investments",
     value: 25,
     description:
-      "Create a budget to track income and expenses, ensuring you're living within your means.",
+      "Invest in smart irrigation systems to efficiently manage water resources and reduce costs.",
     details:
-      "List all income sources and categorize your expenses into needs and wants. Use the 50/30/20 rule: 50% for essentials, 30% for discretionary spending, and 20% for savings or debt repayment.",
+      "Using sensors and automated irrigation systems can help monitor soil moisture and adjust water usage, saving water and increasing crop yields. This leads to long-term financial benefits.",
   },
   {
-    name: "Diversifying Investments",
+    name: "Sustainable Farming Practices",
     value: 20,
     description:
-      "Diversify your investment portfolio to spread risk and maximize potential returns.",
+      "Adopt sustainable farming practices to enhance soil health and productivity.",
     details:
-      "Invest in a mix of asset classes like stocks, bonds, real estate, and commodities. This reduces the impact of poor performance in any one area. Consider index funds for broad exposure.",
+      "Practices like crop rotation, cover cropping, and reduced tillage help preserve soil fertility, reduce input costs, and increase profitability over time.",
   },
   {
-    name: "Building Wealth Over Time",
+    name: "Precision Agriculture",
     value: 15,
     description:
-      "Start investing early to take advantage of compound interest and grow wealth over time.",
+      "Use precision agriculture tools to optimize resource use and maximize farm output.",
     details:
-      "The earlier you start investing, the more time your money has to grow. Even small, regular contributions can accumulate significantly due to compound interest. Automate your investments to stay consistent.",
+      "By leveraging technology like GPS and data analytics, farmers can apply inputs (water, fertilizer, pesticides) more accurately, minimizing waste and boosting production efficiency.",
   },
   {
-    name: "Managing Credit Responsibly",
+    name: "Diversifying Crops",
     value: 25,
     description:
-      "Use credit wisely to build a good credit score and avoid unnecessary debt.",
+      "Diversify crops to reduce risk and increase market opportunities.",
     details:
-      "Pay off your balance in full each month to avoid interest charges. Keep your credit utilization ratio low (under 30%). Regularly check your credit report for errors and dispute inaccuracies.",
+      "Growing a variety of crops can stabilize income by reducing the impact of market fluctuations and adverse weather conditions. It's also a way to enter new markets and add more revenue streams.",
   },
   {
-    name: "Protecting Against Fraud",
+    name: "Protecting Against Market Volatility",
     value: 15,
     description:
-      "Safeguard your finances by taking measures to prevent identity theft and fraud.",
+      "Develop strategies to protect against volatile market prices for agricultural products.",
     details:
-      "Use strong, unique passwords for online banking. Monitor your accounts regularly for suspicious activity. Enable two-factor authentication and avoid sharing sensitive information over unsecured channels.",
+      "Consider contracts, futures, and insurance options to hedge against unpredictable price changes. These tools can provide financial security and ensure stable income even when markets are unstable.",
   },
 ];
 
@@ -52,17 +52,17 @@ const Financial = () => {
   return (
     <div className="max-w-4xl mx-auto p-6 bg-gray-100 rounded-lg shadow-md">
       <h1 className="text-4xl font-bold text-center mb-4 text-gray-800">
-        Financial Literacy Tips
+        AgriTech Farm Finance Strategies
       </h1>
       <p className="text-gray-700 mb-8 text-center">
-        Learn essential financial practices to manage your money effectively and build wealth.
+        Discover key financial strategies to optimize your farm's resources and improve profitability.
       </p>
 
       <div className="flex justify-center mb-6">
-        <PieChart width={400} height={400}>
+        <PieChart width={600} height={400}>
           <Pie
             data={data}
-            cx={200}
+            cx={200}  // Adjust to give space for the legend
             cy={200}
             labelLine={false}
             outerRadius={150}
@@ -89,19 +89,17 @@ const Financial = () => {
               return null;
             }}
           />
-          <Legend wrapperStyle={{ textAlign: "center" }} />
+          <Legend
+            layout="vertical"
+            align="right"
+            verticalAlign="middle"
+            wrapperStyle={{
+              paddingLeft: "20px", // Adds spacing between the pie and legend
+              position: "relative",
+              right: "-50px", // Move legend to the right outside the chart
+            }}
+          />
         </PieChart>
-      </div>
-
-      <div className="bg-white p-4 rounded-lg shadow-md mt-6">
-        <h2 className="text-xl font-bold mb-2 text-gray-800">Key Takeaways</h2>
-        <ul className="list-disc list-inside text-gray-700">
-          {data.map((entry, index) => (
-            <li key={index}>
-              <strong>{entry.name}:</strong> {entry.description}
-            </li>
-          ))}
-        </ul>
       </div>
     </div>
   );
