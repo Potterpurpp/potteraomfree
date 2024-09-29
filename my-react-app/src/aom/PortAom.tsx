@@ -1,12 +1,20 @@
-import React from "react";
-import { FaPhone, FaEnvelope, FaBriefcase, FaLaptopCode, FaTools, FaUniversity } from "react-icons/fa";
+import {
+  FaPhone,
+  FaEnvelope,
+  FaBriefcase,
+  FaLaptopCode,
+  FaTools,
+  FaUniversity,
+} from "react-icons/fa";
 
 const PortAom = () => {
   return (
     <div className="max-w-4xl mx-auto p-8 bg-white shadow-lg rounded-lg">
       {/* Header Section */}
       <header className="text-center mb-12">
-        <h1 className="text-5xl font-bold mb-2 text-gray-800 hover:text-green-600 transition duration-300">Natchayaphorn Janthima (Aom)</h1>
+        <h1 className="text-5xl font-bold mb-2 text-gray-800 hover:text-green-600 transition duration-300">
+          Natchayaphorn Janthima (Aom)
+        </h1>
         <p className="text-xl text-gray-600 mb-4">System Analyst</p>
         <div className="flex justify-center items-center space-x-6">
           <p className="text-md text-gray-500 flex items-center">
@@ -14,7 +22,12 @@ const PortAom = () => {
           </p>
           <p className="text-md text-gray-500 flex items-center">
             <FaEnvelope className="mr-2 text-green-500" />
-            <a href="mailto:Aom.work4@gmail.com" className="text-green-500 hover:underline">Aom.work4@gmail.com</a>
+            <a
+              href="mailto:Aom.work4@gmail.com"
+              className="text-green-500 hover:underline"
+            >
+              Aom.work4@gmail.com
+            </a>
           </p>
         </div>
       </header>
@@ -25,7 +38,10 @@ const PortAom = () => {
           <FaBriefcase className="mr-3 text-green-500" /> Overview
         </h2>
         <p className="text-lg text-gray-700 leading-relaxed">
-          I am a passionate System Analyst with expertise in analyzing and designing systems to optimize efficiency. My experience spans across various domains, from frontend development to backend systems, ensuring smooth integration of solutions for diverse industries.
+          I am a passionate System Analyst with expertise in analyzing and
+          designing systems to optimize efficiency. My experience spans across
+          various domains, from frontend development to backend systems,
+          ensuring smooth integration of solutions for diverse industries.
         </p>
       </section>
 
@@ -35,9 +51,15 @@ const PortAom = () => {
           <FaLaptopCode className="mr-3 text-green-500" /> Projects
         </h2>
         <ul className="list-disc list-inside text-lg text-gray-700 ml-8">
-          <li><strong>Frontend Development:</strong> ThaiLife Insurance</li>
-          <li><strong>Backend Development:</strong> xplORe</li>
-          <li><strong>System Analysis:</strong> YES-Yamaha</li>
+          <li>
+            <strong>Frontend Development:</strong> ThaiLife Insurance
+          </li>
+          <li>
+            <strong>Backend Development:</strong> xplORe
+          </li>
+          <li>
+            <strong>System Analysis:</strong> YES-Yamaha
+          </li>
         </ul>
       </section>
 
@@ -47,10 +69,18 @@ const PortAom = () => {
           <FaTools className="mr-3 text-green-500" /> Skills
         </h2>
         <ul className="list-disc list-inside text-lg text-gray-700 ml-8">
-          <li><strong>Programming Languages:</strong> SQL</li>
-          <li><strong>Frameworks & Libraries:</strong> React</li>
-          <li><strong>Tools:</strong> Git, Docker, AWS</li>
-          <li><strong>Other Expertise:</strong> Agile Methodology, UX/UI Design</li>
+          <li>
+            <strong>Programming Languages:</strong> SQL
+          </li>
+          <li>
+            <strong>Frameworks & Libraries:</strong> React
+          </li>
+          <li>
+            <strong>Tools:</strong> Git, Docker, AWS
+          </li>
+          <li>
+            <strong>Other Expertise:</strong> Agile Methodology, UX/UI Design
+          </li>
         </ul>
       </section>
 
@@ -60,7 +90,8 @@ const PortAom = () => {
           <FaUniversity className="mr-3 text-green-500" /> Education
         </h2>
         <p className="text-lg text-gray-700">
-          <strong>Digital Industry Integration (DII)</strong> - CAMT College of Arts, Media and Technology, Chiang Mai University
+          <strong>Digital Industry Integration (DII)</strong> - CAMT College of
+          Arts, Media and Technology, Chiang Mai University
         </p>
       </section>
     </div>

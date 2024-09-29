@@ -1,4 +1,3 @@
-import React from "react";
 import { PieChart, Pie, Cell, Tooltip, Legend } from "recharts";
 
 const data = [
@@ -55,14 +54,15 @@ const Financial = () => {
         AgriTech Farm Finance Strategies
       </h1>
       <p className="text-gray-700 mb-8 text-center">
-        Discover key financial strategies to optimize your farm's resources and improve profitability.
+        Discover key financial strategies to optimize your farm's resources and
+        improve profitability.
       </p>
 
       <div className="flex justify-center mb-6">
         <PieChart width={600} height={400}>
           <Pie
             data={data}
-            cx={200}  // Adjust to give space for the legend
+            cx={200} // Adjust to give space for the legend
             cy={200}
             labelLine={false}
             outerRadius={150}
@@ -71,7 +71,10 @@ const Financial = () => {
             dataKey="value"
           >
             {data.map((entry, index) => (
-              <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+              <Cell
+                key={`cell-${index}`}
+                fill={COLORS[index % COLORS.length]}
+              />
             ))}
           </Pie>
           <Tooltip
