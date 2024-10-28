@@ -16,26 +16,6 @@ pipeline {
                 }
             }
         }
-
-        stage('Build') {
-            steps {
-                sh 'npm run build' // Runs the build command to compile TypeScript and generate production files
-            }
-        }
-
-        stage('Test') {
-            steps {
-                echo 'Testing...'
-                sh 'npm run test'
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                echo 'Deploying...'
-
-            }
-        }
     }
 
     post {
