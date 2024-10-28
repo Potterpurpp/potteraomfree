@@ -6,7 +6,7 @@ pipeline {
             steps {
                 print("Hello Worlld!")
                 // Cloning repository
-                git 'https://github.com/Potterpurpp/potteraomfree.git'
+                git branch: 'main', url: 'https://github.com/Potterpurpp/potteraomfree.git'
             }
         }
          stage('Install Dependencies') {
@@ -31,7 +31,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying...'
-                
+
             }
         }
     }
