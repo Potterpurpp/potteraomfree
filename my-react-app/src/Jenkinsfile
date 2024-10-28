@@ -11,7 +11,7 @@ pipeline {
         }
          stage('Install Dependencies') {
             steps {
-                cd '/my-react-app'
+                cd 'my-react-app'
                 sh 'npm install'
             }
         }
