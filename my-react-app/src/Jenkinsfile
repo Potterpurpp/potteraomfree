@@ -1,0 +1,50 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                print("Hello Worlld!")
+                // Cloning repository
+                git clone"https://github.com/Potterpurpp/potteraomfree.git"
+            }
+        }
+
+        stage('Build') {
+            steps {
+                echo 'Building...'
+                // Place your build commands here
+                // e.g., sh 'mvn clean install' for Maven projects
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo 'Testing...'
+                // Place your test commands here
+                // e.g., sh 'mvn test' for Maven projects
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deploying...'
+                // Place your deploy commands here
+                // e.g., sh 'scp target/*.jar user@server:/path/to/deploy'
+            }
+        }
+    }
+
+    post {
+        always {
+            echo 'Cleaning up workspace...'
+            cleanWs() // Cleans up the workspace after the build
+        }
+        success {
+            echo 'Pipeline succeeded!'
+        }
+        failure {
+            echo 'Pipeline failed.'
+        }
+    }
+}
