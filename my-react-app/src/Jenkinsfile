@@ -11,14 +11,6 @@ pipeline {
         }
          stage('Install Dependencies') {
             steps {
-        
-                sh 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash'
-
-          
-                sh 'nvm install 20'
-
-  
-                sh 'node -v' 
                 sh 'npm install'
             }
         }
