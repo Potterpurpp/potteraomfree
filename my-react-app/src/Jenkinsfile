@@ -9,10 +9,11 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/Potterpurpp/potteraomfree.git'
             }
         }
-         stage('Install Dependencies') {
+        stage('Install Dependencies') {
             steps {
-                cd 'my-react-app'
-                sh 'npm install'
+                dir('my-react-app') {
+                    sh 'npm install'
+                }
             }
         }
 
