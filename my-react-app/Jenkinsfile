@@ -16,6 +16,13 @@ pipeline {
                 }
             }
         }
+        stage('Build'){
+            steps {
+                dir('my-react-app') {
+                    sh 'npm run build'
+                }
+            }
+        }
     }
 
     post {
