@@ -6,7 +6,7 @@ pipeline {
             steps {
                 print("Hello Worlld!")
                 // Cloning repository
-                git clone"https://github.com/Potterpurpp/potteraomfree.git"
+                git 'https://github.com/Potterpurpp/potteraomfree.git'
             }
         }
 
