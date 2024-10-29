@@ -11,7 +11,6 @@ pipeline {
         stage('Checkout') {
             steps {
                 echo "Hello World!"
-                // Cloning repository
                 git branch: 'main', url: 'https://github.com/Potterpurpp/potteraomfree.git'
             }
         }
@@ -36,7 +35,7 @@ pipeline {
                     // Install Vercel CLI
                     sh 'npm install -g vercel'
                     // Deploy to Vercel
-                    sh 'vercel --token $VERCEL_TOKEN --scope $VERCEL_ORG --prod --confirm --project $VERCEL_PROJECT'
+                    sh "vercel --token $VERCEL_TOKEN --scope $VERCEL_ORG --prod --confirm"
                 }
             }
         }
