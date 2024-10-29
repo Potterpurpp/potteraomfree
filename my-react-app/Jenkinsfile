@@ -4,23 +4,9 @@ pipeline {
     environment {
         VERCEL_TOKEN = credentials('vercel-token')
         VERCEL_ORG = 'potterpurpps-projects'
-        NPM_CONFIG_PREFIX = "${env.WORKSPACE}/.npm-global" // Set custom npm global directory
     }
 
     stages {
-        stage('Prepare Environment') {
-            steps {
-                // Create custom npm global directory and add it to PATH
-                sh '''
-                    mkdir -p $NPM_CONFIG_PREFIX
-                    export PATH=$NPM_CONFIG_PREFIX/bin:$PATH
-                    echo "export PATH=$NPM_CONFIG_PREFIX/bin:$PATH" >> ~/.bashrc
-                '''
-                // Install vercel globally in the custom directory
-                sh 'npm install -g vercel'
-            }
-        }
-
         stage('Checkout') {
             steps {
                 echo "Hello World!"
@@ -45,6 +31,9 @@ pipeline {
         stage('Deploy to Vercel') {
             steps {
                 dir('my-react-app') {
+                    // Install Vercel CLI
+                    sh 'npm install -g vercel'
+                    // Deploy to Vercel
                     sh 'vercel --token $VERCEL_TOKEN --scope $VERCEL_ORG --prod --confirm'
                 }
             }
