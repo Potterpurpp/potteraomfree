@@ -36,7 +36,7 @@ pipeline {
                     // Install Vercel CLI
                     sh 'npm install -g vercel'
                     // Deploy to Vercel
-                    sh "vercel --token $VERCEL_TOKEN --scope $VERCEL_ORG --prod --confirm --project $VERCEL_PROJECT"
+                    sh 'vercel --token $VERCEL_TOKEN --scope $VERCEL_ORG --prod --confirm --project $VERCEL_PROJECT'
                 }
             }
         }
