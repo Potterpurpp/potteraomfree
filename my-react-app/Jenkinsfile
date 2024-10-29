@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        VERCEL_TOKEN = credentials('vercel-token') // Replace with your Jenkins credentials ID
-        VERCEL_ORG = 'potterpurpps-projects' // Your Vercel organization
+        VERCEL_TOKEN = credentials('vercel-token')
+        VERCEL_ORG = 'potterpurpps-projects'
     }
 
     stages {
