@@ -31,9 +31,6 @@ pipeline {
         stage('Deploy to Vercel') {
             steps {
                 dir('my-react-app') {
-                    // Install Vercel CLI
-                    sh 'npm install -g vercel'
-                    // Deploy to Vercel
                     sh "vercel --token $VERCEL_TOKEN --scope $VERCEL_ORG --prod --confirm"
                 }
             }
