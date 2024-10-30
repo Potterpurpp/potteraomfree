@@ -5,7 +5,7 @@ pipeline {
         VERCEL_TOKEN = credentials('vercel-token')
         VERCEL_ORG = 'potterpurpps-projects'
         DISCORD_WEBHOOK_URL = 'https://discord.com/api/webhooks/1301119066265747517/2YJCuNJJO-JlYJ9fUQK7_c_xTUj-Jasv97RiO7Fyb7Y9qPtEtsxNolQKAE4QKaNEszj1'
-
+        //
     }
     stages {
         stage('Checkout') {
