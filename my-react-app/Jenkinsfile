@@ -5,6 +5,29 @@ pipeline {
         VERCEL_TOKEN = credentials('vercel-token')
         VERCEL_ORG = 'potterpurpps-projects'
     }
+    node(slaveLabel) {
+    checkoutCode()
+    prepareVars()
+    discordSend description: "Jenkins Pipeline Build ${appName}", footer: "Start Build", link: "$BUILD_URL", result: currentBuild.currentResult, title: JOB_NAME, webhookURL: "webhook url discord"// Webhook url discord ที่บรรทัดนี้
+
+    switch(envName) {
+      case ["dev", "sit", "uat"]:
+        runUnitTest()
+        runOWASP()
+        runSonarQube()
+        buildAndPushDockerImage()
+        deployApp()
+        // runPerfTest()
+        break
+      case "tag":
+        buildAndPushDockerImage()
+        break
+      case "prod":
+        checkoutCode(checkout_tag: true)
+        deployApp()
+        break
+    }
+  }
 
     stages {
         stage('Checkout') {
