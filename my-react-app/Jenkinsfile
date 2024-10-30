@@ -8,7 +8,7 @@ pipeline {
     node(slaveLabel) {
     checkoutCode()
     prepareVars()
-    discordSend description: "Jenkins Pipeline Build ${appName}", footer: "Start Build", link: "$BUILD_URL", result: currentBuild.currentResult, title: JOB_NAME, webhookURL: "webhook url discord"// Webhook url discord ที่บรรทัดนี้
+    discordSend description: "Jenkins Pipeline Build ${appName}", footer: "Start Build", link: "$BUILD_URL", result: currentBuild.currentResult, title: JOB_NAME, webhookURL: "https://discord.com/channels/626069474100903937/1030699663621365771"// Webhook url discord ที่บรรทัดนี้
 
     switch(envName) {
       case ["dev", "sit", "uat"]:
