@@ -98,25 +98,22 @@ pipeline {
         }
         changed {
             // Notification for "Back to Normal" when the build goes from failure/unstable to success
-            if (currentBuild.resultIsBetterOrEqualTo('SUCCESS')) {
                 office365ConnectorSend(
                     webhookUrl: TEAMS_WEBHOOK_URL,
                     color: '#00ff00',
                     message: "Build is back to normal.",
-                    status: "back to normal"
+                    status: "Back to Normal"
                 )
-            }
         }
         unsuccessful {
             // Notification for repeated failure if the build fails multiple times in a row
-            if (currentBuild.result == 'FAILURE' && previousBuild.result == 'FAILURE') {
                 office365ConnectorSend(
                     webhookUrl: TEAMS_WEBHOOK_URL,
                     color: '#ff0000',
                     message: "Build has repeatedly failed.",
                     status: "repeated failure"
                 )
-            }
+           
         }
     }
 } 
