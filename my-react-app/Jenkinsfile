@@ -5,6 +5,7 @@ pipeline {
         VERCEL_TOKEN = credentials('vercel-token')
         VERCEL_ORG = 'potterpurpps-projects'
         DISCORD_WEBHOOK_URL = 'https://discord.com/api/webhooks/1301119066265747517/2YJCuNJJO-JlYJ9fUQK7_c_xTUj-Jasv97RiO7Fyb7Y9qPtEtsxNolQKAE4QKaNEszj1'
+        TEAMS_WEBHOOK_URL = 'https://bluebikgroupoutlookcom.webhook.office.com/webhookb2/145186be-7da8-49ca-ae1f-04113cb2f86b@c6f661d6-c0e6-4a9b-beee-5dda4af7788b/IncomingWebhook/b2c70ed0cf10420d9443e8055e9ef101/b90aed23-9e60-4dd0-8400-4a9574103f9a/V2IcFDTMgzoWlVX6CHTFhp9QyRSAf_FDo4t7s6EkCra1E1'
     }
     stages {
         stage('Checkout') {
@@ -52,33 +53,70 @@ pipeline {
 
     post {
         always {
-            office365ConnectorSend (
-                webhookUrl: 'https://bluebikgroupoutlookcom.webhook.office.com/webhookb2/145186be-7da8-49ca-ae1f-04113cb2f86b@c6f661d6-c0e6-4a9b-beee-5dda4af7788b/IncomingWebhook/b2c70ed0cf10420d9443e8055e9ef101/b90aed23-9e60-4dd0-8400-4a9574103f9a/V2IcFDTMgzoWlVX6CHTFhp9QyRSAf_FDo4t7s6EkCra1E1',
-                color: "${currentBuild.currentResult}" == 'SUCCESS' ? '#00ff00' : '#ff0000',
-                message: """
-                $date: \n
-                *Total*: $tc_total \n
-                *Passed*: $tc_passed \n
-                *Skipped*: $tc_skipped \n
-                *Failed*: $tc_failed
-                """,
-                status: "${currentBuild.currentResult.toLowerCase()}",
-            )
-            cleanWs(cleanWhenNotBuilt: false,
-                    deleteDirs: true,
-                    disableDeferredWipeout: true,
-                    notFailBuild: true,
-                    patterns: [[pattern: '.gitignore', type: 'INCLUDE'],
-                               [pattern: '.propsfile', type: 'EXCLUDE']])
-        }
-        success {
-            echo 'Pipeline succeeded!'
-        }
-        failure {
-            echo 'Pipeline failed!'
+            echo 'Cleaning workspace...'
+            cleanWs(cleanWhenNotBuilt: false, deleteDirs: true, disableDeferredWipeout: true)
         }
         aborted {
-            echo 'Pipeline Aborted!'
+            office365ConnectorSend(
+                webhookUrl: TEAMS_WEBHOOK_URL,
+                color: '#808080', // Gray color for aborted
+                message: "Build was aborted.",
+                status: "aborted"
+            )
+        }
+        failure {
+            office365ConnectorSend(
+                webhookUrl: TEAMS_WEBHOOK_URL,
+                color: '#ff0000', // Red color for failure
+                message: "Build failed.",
+                status: "failure"
+            )
+        }
+        notBuilt {
+            office365ConnectorSend(
+                webhookUrl: TEAMS_WEBHOOK_URL,
+                color: '#808080', // Gray color for not built
+                message: "Build was not built.",
+                status: "not built"
+            )
+        }
+        success {
+            office365ConnectorSend(
+                webhookUrl: TEAMS_WEBHOOK_URL,
+                color: '#00ff00', // Green color for success
+                message: "Build succeeded.",
+                status: "success"
+            )
+        }
+        unstable {
+            office365ConnectorSend(
+                webhookUrl: TEAMS_WEBHOOK_URL,
+                color: '#ffa500', // Orange color for unstable
+                message: "Build is unstable.",
+                status: "unstable"
+            )
+        }
+        changed {
+            // Notification for "Back to Normal" when the build goes from failure/unstable to success
+            if (currentBuild.resultIsBetterOrEqualTo('SUCCESS')) {
+                office365ConnectorSend(
+                    webhookUrl: TEAMS_WEBHOOK_URL,
+                    color: '#00ff00',
+                    message: "Build is back to normal.",
+                    status: "back to normal"
+                )
+            }
+        }
+        unsuccessful {
+            // Notification for repeated failure if the build fails multiple times in a row
+            if (currentBuild.result == 'FAILURE' && previousBuild.result == 'FAILURE') {
+                office365ConnectorSend(
+                    webhookUrl: TEAMS_WEBHOOK_URL,
+                    color: '#ff0000',
+                    message: "Build has repeatedly failed.",
+                    status: "repeated failure"
+                )
+            }
         }
     }
 } 
