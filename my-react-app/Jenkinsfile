@@ -53,10 +53,10 @@ pipeline {
     post {
         always {
             office365ConnectorSend (
-                webhookUrl: 'webhookUrl',
+                webhookUrl: 'https://bluebikgroupoutlookcom.webhook.office.com/webhookb2/145186be-7da8-49ca-ae1f-04113cb2f86b@c6f661d6-c0e6-4a9b-beee-5dda4af7788b/IncomingWebhook/b2c70ed0cf10420d9443e8055e9ef101/b90aed23-9e60-4dd0-8400-4a9574103f9a/V2IcFDTMgzoWlVX6CHTFhp9QyRSAf_FDo4t7s6EkCra1E1',
                 color: "${currentBuild.currentResult}" == 'SUCCESS' ? '#00ff00' : '#ff0000',
                 message: """
-                Here is the [Regression Report](${env.BUILD_URL}/Extent_20Report/) from $date: \n
+                $date: \n
                 *Total*: $tc_total \n
                 *Passed*: $tc_passed \n
                 *Skipped*: $tc_skipped \n
