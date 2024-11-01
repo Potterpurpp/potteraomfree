@@ -58,7 +58,7 @@ pipeline {
                 webhookUrl: TEAMS_WEBHOOK_URL,
                 color: '#00ADEF', // Blue for build start
                 message: "<b style='font-size:16px;'>🚀 Build Started</b>\nPipeline build #${env.BUILD_NUMBER} has started.",
-                status: "Started"
+                status: "Started",
                 adaptiveCards: true
             )
         }
@@ -69,7 +69,7 @@ pipeline {
                 webhookUrl: TEAMS_WEBHOOK_URL,
                 color: '#FFA500', // Orange for aborted
                 message: "<b style='font-size:16px;'>⛔ Build Aborted</b>\nPipeline build #${env.BUILD_NUMBER} was aborted.",
-                status: "Aborted"
+                status: "Aborted",
                 adaptiveCards: true
             )
         }
@@ -97,7 +97,7 @@ pipeline {
                                 **Committers:** YOUR_COMMITTER_NAME
                                 **image:** ![Not Built](URL_TO_YOUR_NOT_BUILT_IMAGE)
                             """,
-                status: "Not Built"
+                status: "Not Built",
                 adaptiveCards: true
 
             )
@@ -109,7 +109,7 @@ pipeline {
                 webhookUrl: TEAMS_WEBHOOK_URL,
                 color: '#00FF00', // Green for success
                 message: "<b style='font-size:16px;'>Pipeline succeeded for build #${env.BUILD_NUMBER} is successfully built",
-                status: "Success"
+                status: "Success",
                 adaptiveCards: true
             )
         }
@@ -120,7 +120,7 @@ pipeline {
                 webhookUrl: TEAMS_WEBHOOK_URL,
                 color: '#FFFF00', // Yellow for unstable
                 message: "<b style='font-size:16px;'>⚠️ Build Unstable</b>\nPipeline build #${env.BUILD_NUMBER} is unstable.",
-                status: "Unstable"
+                status: "Unstable",
                 adaptiveCards: true
             )
         }
