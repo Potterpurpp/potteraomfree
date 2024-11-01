@@ -59,9 +59,9 @@ pipeline {
                 color: '#00ADEF', // Blue for build start
                 message: """
                     <div style="font-size:16px;">
-                        <img src="https://i.scdn.co/image/ae10a882537eab0c76b4dbaeab8fd5233f370fc4" alt="Build Start Icon" style="width:30 px; height:30px; vertical-align:middle;"/><br/>
                         <strong style="color:#00ADEF;">🚀 Build Started</strong><br/>
                         <span style="font-size:14px;">Pipeline build #${env.BUILD_NUMBER} has started.</span>
+                        <img src="https://i.scdn.co/image/ae10a882537eab0c76b4dbaeab8fd5233f370fc4" alt="Build Start Icon" style="width:100%; height:30px; vertical-align:middle;"/><br/>
                     </div>
                 """,
                 status: "Started"
@@ -75,9 +75,9 @@ pipeline {
                 color: '#FFA500', // Orange for aborted
                 message: """
                     <div style="font-size:16px;">
-                        <img src="https://static.wikia.nocookie.net/filthy-frank/images/4/49/%40papafranku_-_Pink_Guy_%28Dec_5%2C_2014%29.jpg/revision/latest/smart/width/250/height/250?cb=20150803113931" alt="Aborted Icon" style="width:24px; height:24px; vertical-align:middle;"/>\n
                         <strong style="color:#FFA500;">⛔ Build Aborted</strong><br/>
                         <span style="font-size:14px;">Pipeline build #${env.BUILD_NUMBER} was aborted.</span>
+                        <img src="https://static.wikia.nocookie.net/filthy-frank/images/4/49/%40papafranku_-_Pink_Guy_%28Dec_5%2C_2014%29.jpg/revision/latest/smart/width/250/height/250?cb=20150803113931" alt="Aborted Icon" style="width:24px; height:24px; vertical-align:middle;"/>\n
                     </div>
                 """,
                 status: "Aborted"
@@ -91,9 +91,9 @@ pipeline {
                 color: '#FF0000', // Red for failure
                 message: """
                     <div style="font-size:16px;">
-                        <img src="https://static.wikia.nocookie.net/the-giant-memeverse/images/1/17/Pink_guy.jpg/revision/latest?cb=20211108002932" alt="Failure Icon" style="width:24px; height:24px; vertical-align:middle;"/> <br/>
                         <strong style="color:#FF0000;">❌ Build Failed</strong><br/>
                         <span style="font-size:14px;">Pipeline build #${env.BUILD_NUMBER} failed.</span>
+                        <img src="https://static.wikia.nocookie.net/the-giant-memeverse/images/1/17/Pink_guy.jpg/revision/latest?cb=20211108002932" alt="Failure Icon" style="width:24px; height:24px; vertical-align:middle;"/> <br/>
                     </div>
                 """,
                 status: "Failure"
@@ -107,9 +107,9 @@ pipeline {
                 color: '#808080', // Gray for not built
                 message: """
                     <div style="font-size:16px;">
-                        <img src="https://lastfm.freetls.fastly.net/i/u/ar0/eb22c5176c30e1cee392867a9331806f.jpg" alt="Not Built Icon" style="width:24px; height:24px; vertical-align:middle;"/><br/>
                         <strong style="color:#808080;">⚠️ Build Not Built</strong><br/>
                         <span style="font-size:14px;">Pipeline build #${env.BUILD_NUMBER} was not built.</span>
+                        <img src="https://lastfm.freetls.fastly.net/i/u/ar0/eb22c5176c30e1cee392867a9331806f.jpg" alt="Not Built Icon" style="width:24px; height:24px; vertical-align:middle;"/><br/>
                     </div>
                 """,
                 status: "Not Built"
@@ -123,9 +123,9 @@ pipeline {
                 color: '#00FF00', // Green for success
                 message: """
                     <div style="font-size:16px;">
-                        <img src="https://i1.sndcdn.com/artworks-L8KZmmS6i93T6WmL-RnSKGA-t500x500.jpg" alt="Success Icon" style="width:24px; height:24px; vertical-align:middle;"/><br/> 
                         <strong style="color:#00FF00;">✅ Build Succeeded</strong><br/>
                         <span style="font-size:14px;">Pipeline build #${env.BUILD_NUMBER} succeeded.</span>
+                        <img src="https://i1.sndcdn.com/artworks-L8KZmmS6i93T6WmL-RnSKGA-t500x500.jpg" alt="Success Icon" style="width:24px; height:24px; vertical-align:middle;"/><br/> 
                     </div>
                 """,
                 status: "Success"
@@ -139,9 +139,9 @@ pipeline {
                 color: '#FFFF00', // Yellow for unstable
                 message: """
                     <div style="font-size:16px;">
-                        <img src="https://lastfm.freetls.fastly.net/i/u/ar0/17bd09d0ed9695155110624fd156cb28.jpg" alt="Unstable Icon" style="width:24px; height:24px; vertical-align:middle;"/><br/>
                         <strong style="color:#FFFF00;">⚠️ Build Unstable</strong><br/>
                         <span style="font-size:14px;">Pipeline build #${env.BUILD_NUMBER} is unstable.</span>
+                        <img src="https://lastfm.freetls.fastly.net/i/u/ar0/17bd09d0ed9695155110624fd156cb28.jpg" alt="Unstable Icon" style="width:24px; height:24px; vertical-align:middle;"/><br/>
                     </div>
                 """,
                 status: "Unstable"
