@@ -6,6 +6,7 @@ pipeline {
         VERCEL_ORG = 'potterpurpps-projects'
         DISCORD_WEBHOOK_URL = 'https://discord.com/api/webhooks/1301119066265747517/2YJCuNJJO-JlYJ9fUQK7_c_xTUj-Jasv97RiO7Fyb7Y9qPtEtsxNolQKAE4QKaNEszj1'
         TEAMS_WEBHOOK_URL = 'https://bluebikgroupoutlookcom.webhook.office.com/webhookb2/145186be-7da8-49ca-ae1f-04113cb2f86b@c6f661d6-c0e6-4a9b-beee-5dda4af7788b/IncomingWebhook/b2c70ed0cf10420d9443e8055e9ef101/b90aed23-9e60-4dd0-8400-4a9574103f9a/V2IcFDTMgzoWlVX6CHTFhp9QyRSAf_FDo4t7s6EkCra1E1'
+        TEAMS_WEBHOOK_URL2 ='https://bluebikgroupoutlookcom.webhook.office.com/webhookb2/145186be-7da8-49ca-ae1f-04113cb2f86b@c6f661d6-c0e6-4a9b-beee-5dda4af7788b/JenkinsCI/f253091002b4418b8f37bc47c4d65671/b90aed23-9e60-4dd0-8400-4a9574103f9a/V2CHJv_s9jpSD0NXTcZ1H2WVkS-vrX08FvaoRGEfAtY6I1'
     }
     stages {
         stage('Checkout') {
@@ -55,7 +56,7 @@ pipeline {
         always {
             // Notify Build Start
             office365ConnectorSend (
-                webhookUrl: TEAMS_WEBHOOK_URL,
+                webhookUrl: TEAMS_WEBHOOK_URL2,
                 color: '#00ADEF', // Blue for build start
                 message: "<b style='font-size:16px;'>🚀 Build Started</b>\nPipeline build #${env.BUILD_NUMBER} has started.",
                 status: "Started",
@@ -66,7 +67,7 @@ pipeline {
         aborted {
             // Notify Aborted
             office365ConnectorSend (
-                webhookUrl: TEAMS_WEBHOOK_URL,
+                webhookUrl: TEAMS_WEBHOOK_URL2,
                 color: '#FFA500', // Orange for aborted
                 message: "<b style='font-size:16px;'>⛔ Build Aborted</b>\nPipeline build #${env.BUILD_NUMBER} was aborted.",
                 status: "Aborted",
@@ -106,7 +107,7 @@ pipeline {
         success {
             // Notify Success and Back to Normal
             office365ConnectorSend (
-                webhookUrl: TEAMS_WEBHOOK_URL,
+                webhookUrl: TEAMS_WEBHOOK_URL2,
                 color: '#00FF00', // Green for success
                 message: '<b style="font-size:16px;">Pipeline succeeded for build #${env.BUILD_NUMBER} is successfully built',
                 status: "Success",
