@@ -108,7 +108,7 @@ pipeline {
             office365ConnectorSend (
                 webhookUrl: TEAMS_WEBHOOK_URL,
                 color: '#00FF00', // Green for success
-                message: "<b style='font-size:16px;'>Pipeline succeeded for build #${env.BUILD_NUMBER} is successfully built",
+                message: '<b style='font-size:16px;'>Pipeline succeeded for build #${env.BUILD_NUMBER} is successfully built',
                 status: "Success",
                 adaptiveCards: true
             )
