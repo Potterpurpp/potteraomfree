@@ -52,50 +52,71 @@ pipeline {
     }
 
     post {
-        success {
-            script {
-                office365ConnectorSend (
-                    webhookUrl: TEAMS_WEBHOOK_URL,
-                    color: '#00ff00',
-                    message: "Pipeline succeeded for build #${env.BUILD_NUMBER}",
-                    status: "SUCCESS"
-                )
-            }
-            echo 'Pipeline succeeded!'
+        always {
+            // Notify Build Start
+            office365ConnectorSend (
+                webhookUrl: TEAMS_WEBHOOK_URL,
+                color: '#00ADEF', // Blue for build start
+                message: "<img src='https://images.genius.com/bd8337265ec722434bb199b6888360fe.994x994x1.jpg' width='50' height='50' /> <b style='font-size:16px;'>🚀 Build Started</b>\nPipeline build #${env.BUILD_NUMBER} has started.",
+                status: "Started",
+                facts: [
+                    ["Started by", "${env.BUILD_USER}"]
+                ]
+            )
         }
-        failure {
-            script {
-                office365ConnectorSend (
-                    webhookUrl: TEAMS_WEBHOOK_URL,
-                    color: '#ff0000',
-                    message: "Pipeline failed for build #${env.BUILD_NUMBER}",
-                    status: "FAILURE"
-                )
-            }
-            echo 'Pipeline failed!'
-        }
-        unstable {
-            script {
-                office365ConnectorSend (
-                    webhookUrl: TEAMS_WEBHOOK_URL,
-                    color: '#ffff00',
-                    message: "Pipeline is unstable for build #${env.BUILD_NUMBER}",
-                    status: "UNSTABLE"
-                )
-            }
-            echo 'Pipeline is unstable!'
-        }
+
         aborted {
-            script {
-                office365ConnectorSend (
-                    webhookUrl: env.TEAMS_WEBHOOK_URL,
-                    color: '#0000ff',
-                    message: "Pipeline was aborted for build #${env.BUILD_NUMBER}",
-                    status: "ABORTED"
-                )
-            }
-            echo 'Pipeline aborted!'
+            // Notify Aborted
+            office365ConnectorSend (
+                webhookUrl: TEAMS_WEBHOOK_URL,
+                color: '#FFA500', // Orange for aborted
+                message: "<b style='font-size:16px;'>⛔ Build Aborted</b>\nPipeline build #${env.BUILD_NUMBER} was aborted.",
+                status: "Aborted"
+            )
         }
+
+        failure {
+            // Notify Failure and Repeated Failure
+            def repeatedFailure = previousBuild?.result == 'FAILURE' && currentBuild.result == 'FAILURE'
+            office365ConnectorSend (
+                webhookUrl: TEAMS_WEBHOOK_URL,
+                color: '#FF0000', // Red for failure
+                message: "<b style='font-size:16px;'>❌ ${repeatedFailure ? 'Repeated Failure' : 'Build Failed'}</b>\nPipeline build #${env.BUILD_NUMBER} failed.",
+                status: "Failure"
+            )
+        }
+
+        notBuilt {
+            // Notify Not Built
+            office365ConnectorSend (
+                webhookUrl: TEAMS_WEBHOOK_URL,
+                color: '#808080', // Gray for not built
+                message: "<b style='font-size:16px;'>⚠️ Build Not Built</b>\nPipeline build #${env.BUILD_NUMBER} was not built.",
+                status: "Not Built"
+            )
+        }
+
+        success {
+            // Notify Success and Back to Normal
+            def backToNormal = previousBuild?.result == 'FAILURE' && currentBuild.result == 'SUCCESS'
+            office365ConnectorSend (
+                webhookUrl: TEAMS_WEBHOOK_URL,
+                color: '#00FF00', // Green for success
+                message: "<b style='font-size:16px;'>✅ ${backToNormal ? 'Back to Normal' : 'Build Succeeded'}</b>\nPipeline build #${env.BUILD_NUMBER} succeeded.",
+                status: "Success"
+            )
+        }
+
+        unstable {
+            // Notify Unstable
+            office365ConnectorSend (
+                webhookUrl: TEAMS_WEBHOOK_URL,
+                color: '#FFFF00', // Yellow for unstable
+                message: "<b style='font-size:16px;'>⚠️ Build Unstable</b>\nPipeline build #${env.BUILD_NUMBER} is unstable.",
+                status: "Unstable"
+            )
+        }
+
         cleanup {
             cleanWs(cleanWhenNotBuilt: false,
                     deleteDirs: true,
