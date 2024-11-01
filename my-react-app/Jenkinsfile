@@ -59,10 +59,6 @@ pipeline {
                     patterns: [[pattern: '.gitignore', type: 'INCLUDE'],
                                [pattern: '.propsfile', type: 'EXCLUDE']])
         }
-        office365ConnectorSend 
-              color: '#00FF00', 
-              message: 'Build Success', status: 'Success', 
-              webhookUrl: 'https://outlook.office.com/webhook/b369bd24-3d5e-4c5d-86b9-7a9fc4da876f@3eca572a-05f1-430c-8d77-17ec83b68054/IncomingWebhook/8ee9b391bb49436ab417028cb355ee4c/......'
         success {
             echo 'Pipeline succeeded!'
         }
@@ -72,6 +68,5 @@ pipeline {
         aborted {
             echo 'Pipeline Aborted!'
         }
-
     }
-} //
+} 
