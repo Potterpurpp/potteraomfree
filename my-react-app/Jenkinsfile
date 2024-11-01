@@ -52,6 +52,18 @@ pipeline {
 
     post {
         always {
+            office365ConnectorSend (
+                webhookUrl: 'webhookUrl',
+                color: "${currentBuild.currentResult}" == 'SUCCESS' ? '#00ff00' : '#ff0000',
+                message: """
+                Here is the [Regression Report](${env.BUILD_URL}/Extent_20Report/) from $date: \n
+                *Total*: $tc_total \n
+                *Passed*: $tc_passed \n
+                *Skipped*: $tc_skipped \n
+                *Failed*: $tc_failed
+                """,
+                status: "${currentBuild.currentResult.toLowerCase()}",
+            )
             cleanWs(cleanWhenNotBuilt: false,
                     deleteDirs: true,
                     disableDeferredWipeout: true,
@@ -63,7 +75,7 @@ pipeline {
             echo 'Pipeline succeeded!'
         }
         failure {
-            echo 'Pipeline failed.'
+            echo 'Pipeline failed!'
         }
         aborted {
             echo 'Pipeline Aborted!'
