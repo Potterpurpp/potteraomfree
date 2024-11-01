@@ -52,7 +52,7 @@ pipeline {
     }
 
     post {
-        started {
+        always {
             // Notify Build Start
             office365ConnectorSend (
                 webhookUrl: TEAMS_WEBHOOK_URL,
