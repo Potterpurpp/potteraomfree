@@ -52,68 +52,57 @@ pipeline {
     }
 
     post {
-        always {
-            echo 'Cleaning workspace...'
-            cleanWs(cleanWhenNotBuilt: false, deleteDirs: true, disableDeferredWipeout: true)
-        }
-        aborted {
-            office365ConnectorSend(
-                webhookUrl: TEAMS_WEBHOOK_URL,
-                color: '#808080', // Gray color for aborted
-                message: "Build was aborted.",
-                status: "aborted"
-            )
-        }
-        failure {
-            office365ConnectorSend(
-                webhookUrl: TEAMS_WEBHOOK_URL,
-                color: '#ff0000', // Red color for failure
-                message: "Build failed.",
-                status: "failure"
-            )
-        }
-        notBuilt {
-            office365ConnectorSend(
-                webhookUrl: TEAMS_WEBHOOK_URL,
-                color: '#808080', // Gray color for not built
-                message: "Build was not built.",
-                status: "not built"
-            )
-        }
         success {
-            office365ConnectorSend(
-                webhookUrl: TEAMS_WEBHOOK_URL,
-                color: '#00ff00', // Green color for success
-                message: "Build succeeded.",
-                status: "success"
-            )
-        }
-        unstable {
-            office365ConnectorSend(
-                webhookUrl: TEAMS_WEBHOOK_URL,
-                color: '#ffa500', // Orange color for unstable
-                message: "Build is unstable.",
-                status: "unstable"
-            )
-        }
-        changed {
-            // Notification for "Back to Normal" when the build goes from failure/unstable to success
-                office365ConnectorSend(
+            script {
+                office365ConnectorSend (
                     webhookUrl: TEAMS_WEBHOOK_URL,
                     color: '#00ff00',
-                    message: "Build is back to normal.",
-                    status: "Back to Normal"
+                    message: "Pipeline succeeded for build #${env.BUILD_NUMBER}",
+                    status: "SUCCESS"
                 )
+            }
+            echo 'Pipeline succeeded!'
         }
-        unsuccessful {
-            // Notification for repeated failure if the build fails multiple times in a row
-                office365ConnectorSend(
+        failure {
+            script {
+                office365ConnectorSend (
                     webhookUrl: TEAMS_WEBHOOK_URL,
                     color: '#ff0000',
-                    message: "Build has repeatedly failed.",
-                    status: "repeated failure"
+                    message: "Pipeline failed for build #${env.BUILD_NUMBER}",
+                    status: "FAILURE"
                 )
-           
+            }
+            echo 'Pipeline failed!'
+        }
+        unstable {
+            script {
+                office365ConnectorSend (
+                    webhookUrl: TEAMS_WEBHOOK_URL,
+                    color: '#ffff00',
+                    message: "Pipeline is unstable for build #${env.BUILD_NUMBER}",
+                    status: "UNSTABLE"
+                )
+            }
+            echo 'Pipeline is unstable!'
+        }
+        aborted {
+            script {
+                office365ConnectorSend (
+                    webhookUrl: env.TEAMS_WEBHOOK_URL,
+                    color: '#0000ff',
+                    message: "Pipeline was aborted for build #${env.BUILD_NUMBER}",
+                    status: "ABORTED"
+                )
+            }
+            echo 'Pipeline aborted!'
+        }
+        cleanup {
+            cleanWs(cleanWhenNotBuilt: false,
+                    deleteDirs: true,
+                    disableDeferredWipeout: true,
+                    notFailBuild: true,
+                    patterns: [[pattern: '.gitignore', type: 'INCLUDE'],
+                            [pattern: '.propsfile', type: 'EXCLUDE']])
         }
     }
 } 
