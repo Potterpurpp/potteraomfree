@@ -54,75 +54,111 @@ pipeline {
     post {
         always {
             // Notify Build Start
-            office365ConnectorSend (
+            office365ConnectorSend(
                 webhookUrl: TEAMS_WEBHOOK_URL,
                 color: '#00ADEF', // Blue for build start
-                message: "<b style='font-size:16px;'>🚀 Build Started</b>\nPipeline build #${env.BUILD_NUMBER} has started.",
-                status: "Started",
-                adaptiveCards: true
+                message: """
+                    <div style="font-size:16px;">
+                        <img src="https://i.scdn.co/image/ae10a882537eab0c76b4dbaeab8fd5233f370fc4" alt="Build Start Icon" style="width:30 px; height:30px; vertical-align:middle;"/> 
+                        <strong style="color:#00ADEF;">🚀 Build Started</strong><br/>
+                        <span style="font-size:14px;">Pipeline build #${env.BUILD_NUMBER} has started.</span>
+                    </div>
+                """,
+                status: "Started"
             )
         }
 
         aborted {
             // Notify Aborted
-            office365ConnectorSend (
+            office365ConnectorSend(
                 webhookUrl: TEAMS_WEBHOOK_URL,
                 color: '#FFA500', // Orange for aborted
-                message: "<b style='font-size:16px;'>⛔ Build Aborted</b>\nPipeline build #${env.BUILD_NUMBER} was aborted.",
-                status: "Aborted",
-                adaptiveCards: true
+                message: """
+                    <div style="font-size:16px;">
+                        <img src="https://example.com/aborted-icon.png" alt="Aborted Icon" style="width:24px; height:24px; vertical-align:middle;"/> 
+                        <strong style="color:#FFA500;">⛔ Build Aborted</strong><br/>
+                        <span style="font-size:14px;">Pipeline build #${env.BUILD_NUMBER} was aborted.</span>
+                    </div>
+                """,
+                status: "Aborted"
             )
         }
 
         failure {
-            // Notify Failure and Repeated Failure
-            office365ConnectorSend (
+            // Notify Failure
+            office365ConnectorSend(
                 webhookUrl: TEAMS_WEBHOOK_URL,
                 color: '#FF0000', // Red for failure
-                message: "<b style='font-size:16px;'>❌ Build Failed</b>\nPipeline build #${env.BUILD_NUMBER} failed.",
-                status: "Failure",
-                adaptiveCards: true
+                message: """
+                    <div style="font-size:16px;">
+                        <img src="https://example.com/failure-icon.png" alt="Failure Icon" style="width:24px; height:24px; vertical-align:middle;"/> 
+                        <strong style="color:#FF0000;">❌ Build Failed</strong><br/>
+                        <span style="font-size:14px;">Pipeline build #${env.BUILD_NUMBER} failed.</span>
+                    </div>
+                """,
+                status: "Failure"
             )
         }
 
         notBuilt {
             // Notify Not Built
-            office365ConnectorSend (
+            office365ConnectorSend(
                 webhookUrl: TEAMS_WEBHOOK_URL,
                 color: '#808080', // Gray for not built
-                message: "<b style='font-size:16px;'>⚠️ Build Not Built</b>\nPipeline build #${env.BUILD_NUMBER} was not built.",
+                message: """
+                    <div style="font-size:16px;">
+                        <img src="https://example.com/not-built-icon.png" alt="Not Built Icon" style="width:24px; height:24px; vertical-align:middle;"/> 
+                        <strong style="color:#808080;">⚠️ Build Not Built</strong><br/>
+                        <span style="font-size:14px;">Pipeline build #${env.BUILD_NUMBER} was not built.</span>
+                    </div>
+                """,
                 status: "Not Built"
             )
         }
 
         success {
-            office365ConnectorSend (
+            // Notify Success
+            office365ConnectorSend(
                 webhookUrl: TEAMS_WEBHOOK_URL,
                 color: '#00FF00', // Green for success
-                message: "<b style='font-size:16px;'>✅ Build Succeeded</b>\nPipeline build #${env.BUILD_NUMBER} succeeded.",
-                status: "Success",
-                adaptiveCards: true
+                message: """
+                    <div style="font-size:16px;">
+                        <img src="https://example.com/success-icon.png" alt="Success Icon" style="width:24px; height:24px; vertical-align:middle;"/> 
+                        <strong style="color:#00FF00;">✅ Build Succeeded</strong><br/>
+                        <span style="font-size:14px;">Pipeline build #${env.BUILD_NUMBER} succeeded.</span>
+                    </div>
+                """,
+                status: "Success"
             )
         }
 
         unstable {
             // Notify Unstable
-            office365ConnectorSend (
+            office365ConnectorSend(
                 webhookUrl: TEAMS_WEBHOOK_URL,
                 color: '#FFFF00', // Yellow for unstable
-                message: "<b style='font-size:16px;'>⚠️ Build Unstable</b>\nPipeline build #${env.BUILD_NUMBER} is unstable.",
-                status: "Unstable",
-                adaptiveCards: true
+                message: """
+                    <div style="font-size:16px;">
+                        <img src="https://example.com/unstable-icon.png" alt="Unstable Icon" style="width:24px; height:24px; vertical-align:middle;"/> 
+                        <strong style="color:#FFFF00;">⚠️ Build Unstable</strong><br/>
+                        <span style="font-size:14px;">Pipeline build #${env.BUILD_NUMBER} is unstable.</span>
+                    </div>
+                """,
+                status: "Unstable"
             )
         }
 
         cleanup {
-            cleanWs(cleanWhenNotBuilt: false,
-                    deleteDirs: true,
-                    disableDeferredWipeout: true,
-                    notFailBuild: true,
-                    patterns: [[pattern: '.gitignore', type: 'INCLUDE'],
-                            [pattern: '.propsfile', type: 'EXCLUDE']])
+            cleanWs(
+                cleanWhenNotBuilt: false,
+                deleteDirs: true,
+                disableDeferredWipeout: true,
+                notFailBuild: true,
+                patterns: [
+                    [pattern: '.gitignore', type: 'INCLUDE'],
+                    [pattern: '.propsfile', type: 'EXCLUDE']
+                ]
+            )
         }
     }
 } 
